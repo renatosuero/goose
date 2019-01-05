@@ -59,11 +59,11 @@ func (pg PostgresDialect) createVersionTableSQL() string {
 }
 
 func (pg PostgresDialect) insertVersionSQL() string {
-	return fmt.Sprintf("INSERT INTO %s (version_id, is_applied) VALUES ($1, $2);", TableName())
+	return fmt.Sprintf("INSERT INTO public.%s (version_id, is_applied) VALUES ($1, $2);", TableName())
 }
 
 func (pg PostgresDialect) dbVersionQuery(db *sql.DB) (*sql.Rows, error) {
-	rows, err := db.Query(fmt.Sprintf("SELECT version_id, is_applied from %s ORDER BY id DESC", TableName()))
+	rows, err := db.Query(fmt.Sprintf("SELECT version_id, is_applied from public.%s ORDER BY id DESC", TableName()))
 	if err != nil {
 		return nil, err
 	}
