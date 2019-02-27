@@ -16,4 +16,3 @@ LABEL maintainer="suerorenato@gmail.com"
 
 WORKDIR /bin/migrations
 COPY --from=builder /go/bin/ /bin
-ENTRYPOINT ["/bin/goose"]
